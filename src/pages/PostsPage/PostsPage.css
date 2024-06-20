@@ -1,0 +1,27 @@
+/* client/src/pages/PostsPage/PostsPage.css */
+.posts-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+.post-item {
+  border: 1px solid #222222;
+  padding: 10px;
+  border-radius: none;
+}
+.post-item img {
+  max-width: 100%;
+  /* height: auto; */
+}
+.page-header {
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+  

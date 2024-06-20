@@ -1,0 +1,22 @@
+/* client/src/pages/PostsPage/EditPost.css */
+.EditPostPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .edit-post-form {
+    width: 100%;
+    border: 1px solid #222222;
+    padding: 2rem;
+    border-radius: none;
+  }
+  
+  .edit-post-form .MuiTextField-root,
+  .edit-post-form .MuiFormControl-root {
+    margin-bottom: 2rem;
+  }
+  

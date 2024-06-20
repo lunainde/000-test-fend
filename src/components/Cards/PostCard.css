@@ -1,0 +1,5 @@
+/* client/src/components/PostCard/PostCard.css */
+
+.title-height {
+    min-height: 160px !important;
+}

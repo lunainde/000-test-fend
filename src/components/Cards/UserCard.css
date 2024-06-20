@@ -1,0 +1,20 @@
+/* client/src/components/UserCard/UserCard.css */
+.user-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    /* max-width: 1200px; */
+    justify-content: left;
+    margin-bottom: 16px;
+    width: 100%;
+    border: 1px solid #222222;
+    border-radius: 0;
+    padding: 2rem;
+  }
+  
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  

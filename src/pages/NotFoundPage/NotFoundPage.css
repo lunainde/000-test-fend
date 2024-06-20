@@ -1,0 +1,32 @@
+/* client/src/pages/NotFoundPage/NotFoundPage.css */
+
+.not-found-container {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1200px;
+    text-align: left;
+    height: 100vh;
+    background-image: url("/public/oops.jpg"); 
+    background-size: cover;
+    background-position: center;
+}
+.not-found-container h1 {
+  color: orangered;
+  font-family: monospace;
+  overflow: hidden;
+  white-space: nowrap;
+  /* border-right: 0.15em solid orangered; */
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  max-width: 50%; 
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orangered }
+}
+  

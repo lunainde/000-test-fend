@@ -1,0 +1,70 @@
+/* client/src/pages/HomePage/HomePage.css */
+.title-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center !important;
+}
+.title-container a {
+    text-decoration: none;
+    color: #008100; 
+    font-weight: bold;
+}
+.title-container a:hover {
+    text-decoration: underline; 
+}
+.title {
+    font-size: 6rem !important;
+    text-align: left;
+}
+.left {
+    text-align: left;
+}
+.subtitle {
+    font-size: 3rem;
+    color: #09DD15;
+}
+.inline-text {
+    display: flex;
+    text-align: left;
+    align-items: baseline;
+}
+.inline-text {
+    display: flex;
+    align-items: center;
+}
+  .inline-text h1 {
+    font-family: monospace;
+    overflow: hidden;
+    white-space: nowrap;
+    /* border-right: 0.15em solid black; */
+    animation: typing 3.5s steps(23), blink-caret 0.75s ;
+}
+  
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+  
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: black }
+}
+
+.bird-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+.bird-button .bird-image {
+    
+    /* margin-left: 10px; */
+    border: 0.5px solid;
+    vertical-align: center;
+    width: 50px;
+    height: 50px;
+    transition: box-shadow 0.3s ease;
+}
+.bird-button .bird-image:hover {
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+}

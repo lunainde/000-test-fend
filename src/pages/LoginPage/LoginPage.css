@@ -1,0 +1,9 @@
+/* //client/src/pages/LoginPage/LoginPage.css */
+.LoginPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}

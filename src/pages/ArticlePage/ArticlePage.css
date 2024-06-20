@@ -1,0 +1,13 @@
+.center {
+    margin: 0 auto;
+  }
+
+.crud-card {
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+
+.crud-btn {
+    border: 1px solid #222222;
+    padding: 16px;
+}

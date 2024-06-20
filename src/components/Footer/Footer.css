@@ -1,0 +1,9 @@
+.footer-container {
+margin: 24px auto 0 auto !important;
+bottom: 0 !important;
+align-items: center !important;
+justify-content: center !important;
+}
+.space {
+    margin-top: 120px;
+}

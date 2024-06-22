@@ -7,7 +7,7 @@ function ProfilePage() {
   const { user } = useContext(AuthContext);
   return (
     <div>
-      <h1>Profile page</h1>
+      <h1>WHO ARE YOU?</h1>
       <UserCard user={user} />
     </div>
   );

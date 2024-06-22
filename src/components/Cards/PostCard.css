@@ -3,3 +3,11 @@
 .title-height {
     min-height: 160px !important;
 }
+.card-link {
+    text-decoration: none;
+    color: #222222 !important;
+}
+.card-link:hover {
+    text-decoration: none !important;
+}
+

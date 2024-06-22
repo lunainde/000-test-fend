@@ -22,6 +22,7 @@ function StartupCard({ user }) {
 
   return (
     <Card sx={{ maxWidth: 345 }}>
+      <Link className="card-link" href={user.siteUrl} target="_blank" rel="noopener noreferrer" underline="none">
       <CardMedia
         component="img"
         alt={user.name}
@@ -35,9 +36,9 @@ function StartupCard({ user }) {
           alignItems="center"
           mb={1}
         >
-          <Link href={user.siteUrl} target="_blank" rel="noopener noreferrer" underline="none">
             <Typography>{user.name}</Typography>
-          </Link>
+        
+
           <Typography variant="body2" color="text.secondary">
             {formattedDate}
           </Typography>
@@ -55,6 +56,7 @@ function StartupCard({ user }) {
           ))}
         </Box>
       </CardContent>
+      </Link>
       <Divider />
       <CardActions sx={{ justifyContent: "space-around" }}>
         <IconButton>

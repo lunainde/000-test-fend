@@ -5,7 +5,7 @@ import './UserCard.css';
 
 const UserCard = ({ user }) => {
   if (!user) {
-    return null; // Or render a fallback UI
+    return null;
   }
   
   return (

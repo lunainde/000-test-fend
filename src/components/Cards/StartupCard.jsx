@@ -21,7 +21,7 @@ function StartupCard({ user }) {
   const about = user.about || "No description available";
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ minWidth: 345, maxWidth: 345 }}>
       <Link className="card-link" href={user.siteUrl} target="_blank" rel="noopener noreferrer" underline="none">
       <CardMedia
         component="img"
@@ -36,12 +36,8 @@ function StartupCard({ user }) {
           alignItems="center"
           mb={1}
         >
-            <Typography>{user.name}</Typography>
-        
-
-          <Typography variant="body2" color="text.secondary">
-            {formattedDate}
-          </Typography>
+          <Typography>{user.name}</Typography>
+          <Typography variant="body2" color="text.secondary"> {formattedDate} </Typography>
         </Box>
         <Typography gutterBottom variant="h6" component="div" align="left" sx={{ minHeight: "160px" }}  className="about-height">
           {about}

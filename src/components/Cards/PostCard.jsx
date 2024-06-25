@@ -16,7 +16,7 @@ function PostCard({ post }) {
   //console.log(post.user.name);
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ minWidth: 345, maxWidth: 345 }}>
       <Link className="card-link" to={`/posts/${post._id}`}>
         <CardMedia
           component="img"
@@ -48,6 +48,7 @@ function PostCard({ post }) {
             component="div"
             align="left"
             className="title-height"
+            sx={{ minHeight: "160px" }}
           >
             {post.title}
           </Typography>

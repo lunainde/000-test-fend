@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import axios from "axios";
 import "./ProfilePage.css";
+import StartupCard from "../../components/Cards/StartupCard";
 
 function ProfilePage() {
   const { user, logOutUser } = useContext(AuthContext);
@@ -104,11 +105,12 @@ function ProfilePage() {
     <div className="ProfilePage center">
       <div className="left-column">
         <h1>Your Profile</h1>
-        <Avatar
+        <StartupCard key={user._id} user={user}/>
+        {/* <Avatar
           className="avatarButton"
           src={user ? user.imgUrl : "/NoUser.jpg"}
           alt={user ? user.name : "Default User"}
-        />
+        /> */}
         {/* <UserAvatar
           src={user ? user.imgUrl : " "}
           alt={user ? user.name : " "}
@@ -120,7 +122,7 @@ function ProfilePage() {
         marginRight: "1rem",
         }}
       /> */}
-        <Box className="profile-info">
+        {/* <Box className="profile-info">
           <Typography variant="body1"><strong>Name:</strong> {user.name}</Typography>
           <Typography variant="body1"><strong>Category:</strong> {user.category}</Typography>
           <Typography variant="body1">
@@ -133,7 +135,7 @@ function ProfilePage() {
           <Typography variant="body1"><strong>About:</strong> {user.about}</Typography>
           <Typography variant="body1"><strong>Country:</strong> {user.country}</Typography>
           <Typography variant="body1"><strong>Email:</strong> {user.email}</Typography>
-        </Box>
+        </Box> */}
       </div>
 
       <div className="signup-container">

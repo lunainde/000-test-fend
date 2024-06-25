@@ -54,9 +54,6 @@ function HomePage() {
   return (
     <div>
       <div className= "left title-container">
-        {/* <h1 className="title">
-          From the red carpet of fame to the green carpet of change
-        </h1> */}
         <h1 className="title">
           From the red carpet of fame to the green carpet of change
           <button onClick={playSound} className="bird-button">

@@ -26,7 +26,6 @@ const NewPost = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add the logic to submit the form data
 
     axios
       .post(
@@ -84,6 +83,7 @@ const NewPost = () => {
           variant="outlined"
           multiline
           rows={4}
+          style={{ whiteSpace: 'pre-wrap' }}
         />
         <FormControl fullWidth margin="normal" variant="outlined">
           <InputLabel>Tags</InputLabel>

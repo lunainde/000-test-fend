@@ -1,0 +1,65 @@
+/* client/src/pages/ProfilePage/ProfilePage.css */
+.ProfilePage {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 0px 40px;
+    max-width: 1200px;
+  }
+  
+  .signup-container {
+    display: flex;
+    width: 50%;
+    border: 1px solid #222222;
+    border-radius: none;
+  }
+  
+  .left-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: flex-start;
+    padding: 16px;
+    text-align: left;
+  }
+  
+  .left-column img {
+    border-radius: none;
+    margin-bottom: 20px;
+    border-width: 1px;
+    border-color: #222222;
+  }
+  
+  .left-column h1 {
+    font-weight: 700;
+  }
+
+  /* -----RIGHT COL---- */
+  .right-column {
+    flex: 2;
+    padding: 20px;
+  }
+  
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .signup-form h1 {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  
+  .crud-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24px;
+  }
+  
+  .crud-btn {
+    border: 1px solid #222222;
+    padding: 16px;
+  }
+  
+  

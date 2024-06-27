@@ -4,6 +4,7 @@ import axios from "axios";
 import PostCard from "../../components/Cards/PostCard";
 import StartupCard from "../../components/Cards/StartupCard";
 import "./HomePage.css";
+// import { Link } from "react-router-dom";
 
 function HomePage() {
   const [recentPosts, setRecentPosts] = useState([]);
@@ -57,12 +58,12 @@ function HomePage() {
         <h1 className="title">
           From the red carpet of fame to the green carpet of change
           <button onClick={playSound} className="bird-button">
-            <img src="bird2.png" alt="Bird" className="bird-image" />
+            <img src="bird.png" alt="Bird" className="bird-image" />
           </button>
         </h1>
         <div className="inline-text">
           <h1 className="typing-animation">LET IT TWEET HERE . . .</h1>
-        <img src="bird.png" alt="Bird" style={{ marginLeft: '10px', verticalAlign: 'middle', width: '50px', height: '50px' }} />
+        <img src="bird2.png" alt="Bird" style={{ marginLeft: '10px', verticalAlign: 'middle', width: '50px', height: '50px' }} />
         </div>
       </div>
 
@@ -84,8 +85,8 @@ function HomePage() {
       </div>
 
       <div className="divider" />
-
       <div className="left title-container">
+
         <div className="inline-text">
           <h2 className="subtitle">STARTUPS_</h2>
           <h2> in the making for a better tomorrow</h2>
@@ -106,7 +107,6 @@ function HomePage() {
           <h2>stay in the loop for good decisions making</h2>
         </div>
         <p>. . . and take the opportunity to share knowledge</p>
-
         <div className="posts-list">
           {recentPosts.map((post) => (
             <PostCard key={post._id} post={post} />

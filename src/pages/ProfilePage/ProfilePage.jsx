@@ -1,6 +1,20 @@
 // client/src/pages/ProfilePage/ProfilePage.jsx
 import React, { useContext, useState, useEffect } from "react";
-import { Avatar, TextField, Button, MenuItem, Select, FormControl, InputLabel, Checkbox, ListItemText, OutlinedInput, IconButton, Box, Typography } from "@mui/material";
+import {
+  Avatar,
+  TextField,
+  Button,
+  MenuItem,
+  Select,
+  FormControl,
+  InputLabel,
+  Checkbox,
+  ListItemText,
+  OutlinedInput,
+  IconButton,
+  Box,
+  Typography,
+} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
@@ -9,7 +23,8 @@ import "./ProfilePage.css";
 import StartupCard from "../../components/Cards/StartupCard";
 
 function ProfilePage() {
-  const { user, logOutUser } = useContext(AuthContext);
+  const { user, logOutUser, refreshUserInLocalStorage, authenticateUser } =
+    useContext(AuthContext);
   const [email, setEmail] = useState(user?.email || "");
   const [name, setName] = useState(user?.name || "");
   const [category, setCategory] = useState(user?.category || "");
@@ -66,7 +81,7 @@ function ProfilePage() {
     axios
       .put(
         `${process.env.REACT_APP_SERVER_URL}/api/users/update`,
-    // `${process.env.REACT_APP_SERVER_URL}/api/users/${user._id}`,
+        // `${process.env.REACT_APP_SERVER_URL}/api/users/${user._id}`,
         requestBody,
         {
           headers: {
@@ -74,7 +89,10 @@ function ProfilePage() {
           },
         }
       )
-      .then(() => {
+      .then((response) => {
+        const newUser = response.data;
+        refreshUserInLocalStorage(newUser);
+        authenticateUser(newUser);
         navigate("/profile");
       })
       .catch((error) => {
@@ -86,7 +104,7 @@ function ProfilePage() {
   const handleDelete = () => {
     axios
       .delete(`${process.env.REACT_APP_SERVER_URL}/api/users/delete`, {
-   // .delete(`${process.env.REACT_APP_SERVER_URL}/api/users/${user._id}`, {
+        // .delete(`${process.env.REACT_APP_SERVER_URL}/api/users/${user._id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
@@ -105,7 +123,7 @@ function ProfilePage() {
     <div className="ProfilePage center">
       <div className="left-column">
         <h1>Your Profile</h1>
-        <StartupCard key={user._id} user={user}/>
+        <StartupCard key={user._id} user={user} />
         {/* <Avatar
           className="avatarButton"
           src={user ? user.imgUrl : "/NoUser.jpg"}
@@ -177,16 +195,16 @@ function ProfilePage() {
                 renderValue={(selected) => selected.join(" | ")}
               >
                 {[
-                  "Building",
-                  "Carbon",
-                  "Energy",
-                  "Food",
-                  "Greentech",
-                  "Investment",
-                  "Nature-Based",
-                  "ReFi",
-                  "Transport",
-                  "Other",
+                  "building",
+                  "carbon",
+                  "energy",
+                  "food",
+                  "greentech",
+                  "investment",
+                  "nature-based",
+                  "refi",
+                  "transport",
+                  "other",
                 ].map((tag) => (
                   <MenuItem key={tag} value={tag}>
                     <Checkbox checked={tags.indexOf(tag) > -1} />
@@ -273,7 +291,6 @@ function ProfilePage() {
 }
 
 export default ProfilePage;
-
 
 //client/src/pages/ProfilePage/ProfilePage.jsx
 // import React, { useContext } from 'react';

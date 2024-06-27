@@ -76,7 +76,7 @@ function SignupPage() {
         <h1>Happy to have you here!</h1>
         <p>Let's join forces for a better tomorrow.</p>
       </div>
-     
+
       <div className="signup-container">
         <div className="right-column">
           <form onSubmit={handleSignupSubmit} className="signup-form">
@@ -116,15 +116,16 @@ function SignupPage() {
                 renderValue={(selected) => selected.join(", ")}
               >
                 {[
-                  "Building",
-                  "Carbon",
-                  "Energy",
-                  "Food",
-                  "Greentech",
-                  "Investment",
-                  "Nature-Based",
-                  "ReFi",
-                  "Transport",
+                  "building",
+                  "carbon",
+                  "energy",
+                  "food",
+                  "greentech",
+                  "investment",
+                  "nature-based",
+                  "refi",
+                  "transport",
+                  "other",
                 ].map((tag) => (
                   <MenuItem key={tag} value={tag}>
                     <Checkbox checked={tags.indexOf(tag) > -1} />

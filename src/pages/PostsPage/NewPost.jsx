@@ -1,11 +1,24 @@
 //client/src/pages/PostsPage/NewPost.jsx
+
 import React, { useState, useContext } from "react";
-import { TextField, Button, MenuItem, Select, FormControl, InputLabel, Checkbox, ListItemText, OutlinedInput, Typography } from "@mui/material";
+import {
+  TextField,
+  Button,
+  MenuItem,
+  Select,
+  FormControl,
+  InputLabel,
+  Checkbox,
+  ListItemText,
+  OutlinedInput,
+  Typography,
+} from "@mui/material";
 import { AuthContext } from "../../context/auth.context";
 import UserCard from "../../components/Cards/UserCard";
 import axios from "axios";
-import "./NewPost.css";
 import { useNavigate } from "react-router-dom";
+import RichTextEditor from "../../components/Editor/RichTextEditor"; // Import the RichTextEditor
+import "./NewPost.css";
 
 const NewPost = () => {
   const { user } = useContext(AuthContext);
@@ -18,7 +31,7 @@ const NewPost = () => {
 
   const handleImgUrlChange = (e) => setImgUrl(e.target.value);
   const handleTitleChange = (e) => setTitle(e.target.value);
-  const handleContentChange = (e) => setContent(e.target.value);
+  const handleContentChange = (value) => setContent(value); // Adjust to handle content from the RichTextEditor
   const handleTagsChange = (e) => {
     const value = e.target.value;
     setTags(typeof value === "string" ? value.split(",") : value);
@@ -72,19 +85,7 @@ const NewPost = () => {
           margin="normal"
           variant="outlined"
         />
-        <TextField
-          label="Content"
-          type="text"
-          name="content"
-          value={content}
-          onChange={handleContentChange}
-          fullWidth
-          margin="normal"
-          variant="outlined"
-          multiline
-          rows={4}
-          style={{ whiteSpace: 'pre-wrap' }}
-        />
+        <RichTextEditor value={content} onChange={handleContentChange} />
         <FormControl fullWidth margin="normal" variant="outlined">
           <InputLabel>Tags</InputLabel>
           <Select

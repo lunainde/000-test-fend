@@ -1,4 +1,4 @@
-//client/src/context/auth.context.jsx
+// client/src/context/auth.context.jsx
 
 import React, { useState, useEffect } from "react";
 import authService from "../services/auth.service";
@@ -14,60 +14,44 @@ function AuthProviderWrapper(props) {
     localStorage.setItem("authToken", token);
   };
 
-  const authenticateUser = () => {
-    // Get the stored token from the localStorage
-    const storedToken = localStorage.getItem("authToken");
-
-    // If the token exists in the localStorage
-    if (storedToken) {
-      // Send a request to the server using axios
-      /*  axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/auth/verify`,
-          { headers: { Authorization: `Bearer ${storedToken}` } }
-        ).then((response) => {}) */
-      // Or using a service
-      authService
-        .verify()
-        .then((response) => {
-          // console.log("RESPONSE FROM VERIFY:", response.data); // Log response
-          // If the server verifies that JWT token is valid 
-          const user = response.data;
-          //console.log('dataFromContextTest', user)
-          // Update state variables
-          setIsLoggedIn(true);
-          setIsLoading(false);
-          setUser(user);
-          // console.warn("USER SET IN CONTEXT:", user);
-        })
-        .catch((error) => {
-          // If the server sends an error response (invalid token) ❌
-          // Update state variables
-          console.error("VERIFICATION FAILED:", error); // Log any errors
-          setIsLoggedIn(false);
-          setIsLoading(false);
-          setUser(null);
-        });
-    } else {
-      // If the token is not available
-      setIsLoggedIn(false);
-      setIsLoading(false);
-      setUser(null);
-    }
-  };
-
   const removeToken = () => {
     localStorage.removeItem("authToken");
   };
 
+  const refreshUserInLocalStorage = (user) => {
+    localStorage.setItem("user", JSON.stringify(user));
+    setUser(user);
+  };
+
+  const authenticateUser = () => {
+    const storedToken = localStorage.getItem("authToken");
+
+    if (storedToken) {
+      authService
+        .verify()
+        .then((response) => {
+          refreshUserInLocalStorage(response.data);
+          setIsLoggedIn(true);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          setIsLoggedIn(false);
+          setIsLoading(false);
+          console.error("VERIFICATION FAILED:", error);
+        });
+    } else {
+      setIsLoggedIn(false);
+      setIsLoading(false);
+    }
+  };
+
   const logOutUser = () => {
-    // Upon logout, remove the token from the localStorage
     removeToken();
+    localStorage.removeItem("user");
     authenticateUser();
   };
 
   useEffect(() => {
-    // Run this code once the AuthProviderWrapper component in the App loads for the first time.
-    // This effect runs when the application and the AuthProviderWrapper component load for the first time.
     authenticateUser();
   }, []);
 
@@ -80,6 +64,7 @@ function AuthProviderWrapper(props) {
         storeToken,
         authenticateUser,
         logOutUser,
+        refreshUserInLocalStorage,
       }}
     >
       {props.children}

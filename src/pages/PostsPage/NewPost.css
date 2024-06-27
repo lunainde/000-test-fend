@@ -1,20 +1,20 @@
 /* client/src/pages/PostsPage/NewPost.css */
+
 .NewPostPage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .new-post-form {
-    width: 100%;
-    border: 1px solid #222222;
-    padding: 2rem;
-    border-radius: none;
-  }
-  .new-post-form .MuiTextField-root,
-  .new-post-form .MuiFormControl-root {
-    margin-bottom: 2rem;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.new-post-form {
+  width: 100%;
+  border: 1px solid #222222;
+  padding: 2rem;
+  border-radius: none;
+}
+.new-post-form .MuiTextField-root,
+.new-post-form .MuiFormControl-root {
+  margin-bottom: 2rem;
+}

@@ -26,7 +26,7 @@ const NewPost = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [tags, setTags] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleImgUrlChange = (e) => setImgUrl(e.target.value);

@@ -1,6 +1,6 @@
 // client/src/context/auth.context.jsx
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import authService from "../services/auth.service";
 
 const AuthContext = React.createContext();
@@ -23,7 +23,7 @@ function AuthProviderWrapper(props) {
     setUser(user);
   };
 
-  const authenticateUser = () => {
+  const authenticateUser = useCallback(() => {
     const storedToken = localStorage.getItem("authToken");
 
     if (storedToken) {
@@ -43,7 +43,7 @@ function AuthProviderWrapper(props) {
       setIsLoggedIn(false);
       setIsLoading(false);
     }
-  };
+  }, []);
 
   const logOutUser = () => {
     removeToken();
@@ -53,7 +53,7 @@ function AuthProviderWrapper(props) {
 
   useEffect(() => {
     authenticateUser();
-  }, []);
+  }, [authenticateUser]);
 
   return (
     <AuthContext.Provider

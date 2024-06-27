@@ -1,7 +1,6 @@
 // client/src/pages/ProfilePage/ProfilePage.jsx
 import React, { useContext, useState, useEffect } from "react";
 import {
-  Avatar,
   TextField,
   Button,
   MenuItem,
@@ -12,8 +11,6 @@ import {
   ListItemText,
   OutlinedInput,
   IconButton,
-  Box,
-  Typography,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";

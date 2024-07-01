@@ -121,36 +121,8 @@ function ProfilePage() {
       <div className="left-column">
         <h1>Your Profile</h1>
         <StartupCard key={user._id} user={user} />
-        {/* <Avatar
-          className="avatarButton"
-          src={user ? user.imgUrl : "/NoUser.jpg"}
-          alt={user ? user.name : "Default User"}
-        /> */}
-        {/* <UserAvatar
-          src={user ? user.imgUrl : " "}
-          alt={user ? user.name : " "}
-          sx={{
-        width: "80px !important",
-        height: "80px !important",
-        border: "1px solid black",
-        borderRadius: "0 !important",
-        marginRight: "1rem",
-        }}
-      /> */}
-        {/* <Box className="profile-info">
-          <Typography variant="body1"><strong>Name:</strong> {user.name}</Typography>
-          <Typography variant="body1"><strong>Category:</strong> {user.category}</Typography>
-          <Typography variant="body1">
-            <strong>Tags:</strong> {user.tags ? user.tags.join(", ") : "No tags available"}
-          </Typography>
-          <Typography variant="body1">
-            <strong>Website:</strong> <a href={user.siteUrl} target="_blank" rel="noopener noreferrer">{user.siteUrl}</a>
-          </Typography>
-          <Typography variant="body1"><strong>Tagline:</strong> {user.headline}</Typography>
-          <Typography variant="body1"><strong>About:</strong> {user.about}</Typography>
-          <Typography variant="body1"><strong>Country:</strong> {user.country}</Typography>
-          <Typography variant="body1"><strong>Email:</strong> {user.email}</Typography>
-        </Box> */}
+      
+      
       </div>
 
       <div className="signup-container">
@@ -201,6 +173,7 @@ function ProfilePage() {
                   "nature-based",
                   "refi",
                   "transport",
+                  "reform",
                   "other",
                 ].map((tag) => (
                   <MenuItem key={tag} value={tag}>

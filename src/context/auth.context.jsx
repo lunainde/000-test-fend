@@ -4,7 +4,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import authService from "../services/auth.service";
 
 const AuthContext = React.createContext();
-
 function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);

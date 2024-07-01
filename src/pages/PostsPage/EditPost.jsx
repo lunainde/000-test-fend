@@ -126,15 +126,17 @@ const EditPost = () => {
             renderValue={(selected) => selected.join(", ")}
           >
             {[
-              "Building",
-              "Carbon",
-              "Energy",
-              "Food",
-              "Greentech",
-              "Investment",
-              "ReFi",
-              "Reform",
-              "Transport",
+              "building",
+              "carbon",
+              "energy",
+              "food",
+              "greentech",
+              "investment",
+              "nature-based",
+              "refi",
+              "transport",
+              "reform",
+              "other",
             ].map((tag) => (
               <MenuItem key={tag} value={tag}>
                 <Checkbox checked={post.tags.indexOf(tag) > -1} />

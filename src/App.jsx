@@ -15,13 +15,15 @@ import ArticlePage from "./pages/ArticlePage/ArticlePage"
 import Footer from "./components/Footer/Footer";
 import EditPost from './pages/PostsPage/EditPost';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-
+import BookmarksPage from './pages/SelectionPage/BookmarksPage'; 
+import FavoritesPage from './pages/SelectionPage/FavoritesPage';
 function App() {
   return (
     <div className="App">
     <Header/>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/profile" element={<IsPrivate><ProfilePage /></IsPrivate>} />
         <Route path="/signup" element={ <IsAnon> <SignupPage /> </IsAnon> } />
         <Route path="/login" element={ <IsAnon><LoginPage /></IsAnon> } />
@@ -30,6 +32,7 @@ function App() {
         <Route path="/startups" element={<IsPrivate><StartupsPage/></IsPrivate>} />
         <Route path="/posts/:postId" element={ <IsPrivate><ArticlePage/></IsPrivate>} />
         <Route path="/posts/edit/:postId" element={<IsPrivate><EditPost /></IsPrivate>} />
+        <Route path="/bookmarks" element={<IsPrivate><BookmarksPage /></IsPrivate>} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     <Footer/>

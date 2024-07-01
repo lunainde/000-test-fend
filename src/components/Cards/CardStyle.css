@@ -1,4 +1,16 @@
-/* client/src/components/UserCard/UserCard.css */
+/* client/src/components/Cards/CardStyle.css */
+/* --------POST/STARTUP-------- */
+.title-height {
+    min-height: 160px !important;
+}
+.card-link {
+    text-decoration: none;
+    color: #222222 !important;
+}
+.card-link:hover {
+    text-decoration: none !important;
+}
+/* ---------USER CARD--------- */
 .user-card {
     display: flex;
     align-items: center;
@@ -17,4 +29,4 @@
     flex-direction: column;
     text-align: left;
   }
-  
+

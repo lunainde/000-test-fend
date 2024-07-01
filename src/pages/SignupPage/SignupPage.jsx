@@ -125,6 +125,7 @@ function SignupPage() {
                   "nature-based",
                   "refi",
                   "transport",
+                  "reform",
                   "other",
                 ].map((tag) => (
                   <MenuItem key={tag} value={tag}>

@@ -1,24 +1,19 @@
-// //client/src/components/Cards/StartupCard.jsx
+//client/src/components/Cards/StartupCard.jsx
 
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
-import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
-import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import { Box, Chip, Divider, IconButton, Link } from "@mui/material";
+import { Box, Chip, Divider, Link } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import CardFavButtons from '../Cards/CardFavButtons';
+import "./CardStyle.css";
 
 function StartupCard({ user }) {
   const { isLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [liked, setLiked] = useState(false);
-  const [bookmarked, setBookmarked] = useState(false);
-  const [shared, setShared] = useState(false);
 
   if (!user) {
     return <p>No user data</p>;
@@ -27,8 +22,7 @@ function StartupCard({ user }) {
   const formattedDate = user.createdAt
     ? new Date(user.createdAt).toLocaleDateString()
     : "Date not available";
-  const tags =
-    user.tags && user.tags.length > 0 ? user.tags : ["No tags available"];
+  const tags = user.tags && user.tags.length > 0 ? user.tags : ["No tags available"];
   const about = user.about || "No description available";
 
   const handleCardClick = (event) => {
@@ -37,33 +31,6 @@ function StartupCard({ user }) {
       navigate("/login");
     } else {
       window.open(user.siteUrl, "_blank");
-    }
-  };
-
-  const handleLikeClick = () => {
-    if (isLoggedIn) {
-      setLiked(!liked);
-      // Add logic here to handle the like action (e.g., API call)
-    } else {
-      navigate("/login");
-    }
-  };
-
-  const handleBookmarkClick = () => {
-    if (isLoggedIn) {
-      setBookmarked(!bookmarked);
-      // Add logic here to handle the bookmark action (e.g., API call)
-    } else {
-      navigate("/login");
-    }
-  };
-
-  const handleShareClick = () => {
-    if (isLoggedIn) {
-      setShared(!shared);
-      // Add logic here to handle the share action (e.g., API call)
-    } else {
-      navigate("/login");
     }
   };
 
@@ -98,6 +65,7 @@ function StartupCard({ user }) {
         >
           {about}
         </Typography>
+
         <Box mt={2}>
           {tags.map((tag, index) => (
             <Chip
@@ -107,37 +75,14 @@ function StartupCard({ user }) {
             />
           ))}
         </Box>
+        
       </CardContent>
       <Divider />
-      <CardActions sx={{ justifyContent: "space-around" }}>
-      <IconButton
-          onClick={handleLikeClick}
-          sx={{
-            color: liked ? "primary.main" : "default",
-            backgroundColor: liked ? "rgba(25, 118, 210, 0.1)" : "transparent"
-          }}
-        >
-          <ThumbUpOutlinedIcon />
-        </IconButton>
-        <IconButton
-          onClick={handleBookmarkClick}
-          sx={{
-            color: bookmarked ? "primary.main" : "default",
-            backgroundColor: bookmarked ? "rgba(25, 118, 210, 0.1)" : "transparent"
-          }}
-        >
-          <BookmarkBorderOutlinedIcon />
-        </IconButton>
-        <IconButton
-          onClick={handleShareClick}
-          sx={{
-            color: shared ? "primary.main" : "default",
-            backgroundColor: shared ? "rgba(25, 118, 210, 0.1)" : "transparent",
-          }}
-        >
-          <ShareOutlinedIcon />
-        </IconButton>
-      </CardActions>
+      <CardFavButtons
+        startupId={user._id}
+        initialShared={false}
+        siteUrl={user.siteUrl}
+      />
     </Card>
   );
 }
@@ -151,178 +96,207 @@ export default StartupCard;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// --------------V3--------------------
-// import React from "react";
-// import { AuthContext } from "../../context/auth.context"; //LOGGEDIN
+// ----------------------v2----------------------------
+// import React, { useContext, useState } from "react";
+// import { AuthContext } from "../../context/auth.context";
 // import Card from "@mui/material/Card";
-// import CardActions from "@mui/material/CardActions";
 // import CardContent from "@mui/material/CardContent";
 // import CardMedia from "@mui/material/CardMedia";
 // import Typography from "@mui/material/Typography";
-// import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
-// import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
-// import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-// import { Box, Chip, Divider, IconButton, Link } from "@mui/material";
+// import { Box, Chip, Divider, Link } from "@mui/material";
+// import { useNavigate } from "react-router-dom";
+// import CardFavButtons from '../Cards/CardFavButtons';
+// import "./CardStyle.css";
 
-// function StartupCard({ user }) {
+// function StartupCard({ user, onRemoveFavorite }) {
+//   const { isLoggedIn } = useContext(AuthContext);
+//   const navigate = useNavigate();
+
 //   if (!user) {
 //     return <p>No user data</p>;
 //   }
+
 //   const formattedDate = user.createdAt
 //     ? new Date(user.createdAt).toLocaleDateString()
 //     : "Date not available";
-//   const tags =
-//     user.tags && user.tags.length > 0 ? user.tags : ["No tags available"];
+//   const tags = user.tags && user.tags.length > 0 ? user.tags : ["No tags available"];
 //   const about = user.about || "No description available";
+
+//   const handleCardClick = (event) => {
+//     event.preventDefault();
+//     if (!isLoggedIn) {
+//       navigate("/login");
+//     } else {
+//       window.open(user.siteUrl, "_blank");
+//     }
+//   };
+
+//   // const handleRemoveFavorite = () => {
+//   //   if (onRemoveFavorite) {
+//   //     onRemoveFavorite(user._id); // CALL THE PROP FUNCTION TO REMOVE FAVORITE
+//   //   }
+//   // };
 
 //   return (
 //     <Card sx={{ minWidth: 345, maxWidth: 345 }}>
-//       <Link
-//         className="card-link"
-//         href={user.siteUrl}
-//         target="_blank"
-//         rel="noopener noreferrer"
-//         underline="none"
-//       >
-//         <CardMedia
-//           component="img"
-//           alt={user.name}
-//           height="200"
-//           image={user.imgUrl}
-//         />
-//         <CardContent>
-//           <Box
-//             display="flex"
-//             justifyContent="space-between"
-//             alignItems="center"
-//             mb={1}
+//       <CardMedia component="img" alt={user.name} height="200" image={user.imgUrl} />
+//       <CardContent>
+//         <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
+//           <Link
+//             className="card-link"
+//             onClick={handleCardClick}
+//             component="button"
+//             underline="none"
 //           >
 //             <Typography>{user.name}</Typography>
-//             <Typography variant="body2" color="text.secondary">
-//               {" "}
-//               {formattedDate}{" "}
-//             </Typography>
-//           </Box>
-//           <Typography variant="body2" color="text.secondary" textAlign="left">
-//             {user.category}
+//           </Link>
+//           <Typography variant="body2" color="text.secondary">
+//             {formattedDate}
 //           </Typography>
-//           <Divider sx={{ my: 2 }} />
-//           <Typography
-//             gutterBottom
-//             variant="h6"
-//             component="div"
-//             align="left"
-//             sx={{ minHeight: "160px" }}
-//             className="about-height"
-//           >
-//             {about}
-//           </Typography>
-//           <Box mt={2}>
-//             {tags.map((tag, index) => (
-//               <Chip
-//                 key={index}
-//                 label={tag}
-//                 sx={{ backgroundColor: "#f5f5f5", marginRight: 1 }}
-//               />
-//             ))}
-//           </Box>
-//         </CardContent>
-//       </Link>
+//         </Box>
+//         <Typography variant="body2" color="text.secondary" textAlign="left">
+//           {user.category}
+//         </Typography>
+//         <Divider sx={{ my: 2 }} />
+//         <Typography
+//           gutterBottom
+//           variant="h6"
+//           component="div"
+//           align="left"
+//           sx={{ minHeight: "160px" }}
+//           className="about-height"
+//         >
+//           {about}
+//         </Typography>
+//         <Box mt={2}>
+//           {tags.map((tag, index) => (
+//             <Chip
+//               key={index}
+//               label={tag}
+//               sx={{ backgroundColor: "#f5f5f5", marginRight: 1 }}
+//             />
+//           ))}
+//         </Box>
+//       </CardContent>
 //       <Divider />
-//       <CardActions sx={{ justifyContent: "space-around" }}>
-//         <IconButton>
-//           <ThumbUpOutlinedIcon />
-//         </IconButton>
-//         <IconButton>
-//           <BookmarkBorderOutlinedIcon />
-//         </IconButton>
-//         <IconButton>
-//           <ShareOutlinedIcon />
-//         </IconButton>
-//       </CardActions>
+//       <CardFavButtons
+//         startupId={user._id}
+//         initialFavorited={user.isFavorited} // Pass the actual fav state
+//         initialShared={false}    // fetch the actual initial state
+//         siteUrl={user.siteUrl}
+//       />
 //     </Card>
 //   );
 // }
 
 // export default StartupCard;
 
-//-------------VERSION 1---------------
-// import React from "react";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ---------------v1---------------
+// import React, { useContext, useState } from "react";
+// import { AuthContext } from "../../context/auth.context";
 // import Card from "@mui/material/Card";
-// import CardActions from "@mui/material/CardActions";
 // import CardContent from "@mui/material/CardContent";
 // import CardMedia from "@mui/material/CardMedia";
 // import Typography from "@mui/material/Typography";
-// import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
-// import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
-// import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-// import { Box, Chip, Divider, IconButton } from "@mui/material";
+// import { Box, Chip, Divider, Link } from "@mui/material";
+// import { useNavigate } from "react-router-dom";
+// import CardFavButtons from '../Cards/CardFavButtons';
+// import "./CardStyle.css";
 
 // function StartupCard({ user }) {
+//   const { isLoggedIn } = useContext(AuthContext);
+//   const navigate = useNavigate();
+
 //   if (!user) {
 //     return <p>No user data</p>;
 //   }
 
+//   const formattedDate = user.createdAt
+//     ? new Date(user.createdAt).toLocaleDateString()
+//     : "Date not available";
+//   const tags = user.tags && user.tags.length > 0 ? user.tags : ["No tags available"];
+//   const about = user.about || "No description available";
+
+//   const handleCardClick = (event) => {
+//     event.preventDefault();
+//     if (!isLoggedIn) {
+//       navigate("/login");
+//     } else {
+//       window.open(user.siteUrl, "_blank");
+//     }
+//   };
+
 //   return (
-//     <Card sx={{ maxWidth: 345 }}>
-//       <CardMedia
-//         component="img"
-//         alt={user.name}
-//         height="200"
-//         image={user.imgUrl}
-//       />
+//     <Card sx={{ minWidth: 345, maxWidth: 345 }}>
+//       <CardMedia component="img" alt={user.name} height="200" image={user.imgUrl} />
 //       <CardContent>
-//         <Box
-//           display="flex"
-//           justifyContent="space-between"
-//           alignItems="center"
-//           mb={1}
-//         >
+//         <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
+//           <Link
+//             className="card-link"
+//             onClick={handleCardClick}
+//             component="button"
+//             underline="none"
+//           >
+//             <Typography>{user.name}</Typography>
+//           </Link>
 //           <Typography variant="body2" color="text.secondary">
-//             {user.name}
-//           </Typography>
-//           <Typography variant="body2" color="text.secondary">
-//             {new Date(user.createdAt).toLocaleDateString()}
+//             {formattedDate}
 //           </Typography>
 //         </Box>
-//         <Typography gutterBottom variant="h6" component="div" align="left">
-//           {user.about}
+//         <Typography variant="body2" color="text.secondary" textAlign="left">
+//           {user.category}
+//         </Typography>
+//         <Divider sx={{ my: 2 }} />
+//         <Typography
+//           gutterBottom
+//           variant="h6"
+//           component="div"
+//           align="left"
+//           sx={{ minHeight: "160px" }}
+//           className="about-height"
+//         >
+//           {about}
 //         </Typography>
 //         <Box mt={2}>
-//           <Chip
-//             label={user.tags}
-//             sx={{ backgroundColor: "#f5f5f5", marginRight: 1 }}
-//           />
+//           {tags.map((tag, index) => (
+//             <Chip
+//               key={index}
+//               label={tag}
+//               sx={{ backgroundColor: "#f5f5f5", marginRight: 1 }}
+//             />
+//           ))}
 //         </Box>
 //       </CardContent>
 //       <Divider />
-//       <CardActions sx={{ justifyContent: "space-around" }}>
-//         <IconButton>
-//           <ThumbUpOutlinedIcon />
-//         </IconButton>
-//         <IconButton>
-//           <BookmarkBorderOutlinedIcon />
-//         </IconButton>
-//         <IconButton>
-//           <ShareOutlinedIcon />
-//         </IconButton>
-//       </CardActions>
+//       <CardFavButtons
+//         startupId={user._id}
+//         initialFavorited={false} // You might want to fetch the actual initial state
+//         initialShared={false}    // You might want to fetch the actual initial state
+//         siteUrl={user.siteUrl}
+//       />
 //     </Card>
 //   );
 // }

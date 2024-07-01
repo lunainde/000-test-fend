@@ -1,6 +1,5 @@
-// client/src/pages/LoginPage.jsx
-
 //client/src/pages/LoginPage/LoginPage.jsx
+
 import "./LoginPage.css";
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -76,73 +75,3 @@ function LoginPage() {
 }
 export default LoginPage;
 
-/*
-import React, { useContext, useState } from "react";
-import { AuthContext } from "../../context/auth.context";
-import authService from "../../services/auth.service";
-
-function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { storeToken, authenticateUser, refreshUserInLocalStorage } =
-    useContext(AuthContext);
-
-  const handleLoginSubmit = (event) => {
-    event.preventDefault();
-
-    const requestBody = { email, password };
-
-    authService
-      .login(requestBody)
-      .then((response) => {
-        storeToken(response.data.authToken);
-        refreshUserInLocalStorage(response.data.user);
-        authenticateUser();
-      })
-      .catch((error) => {
-        console.error("Error during login:", error);
-      });
-  };
-
-  return (
-    <div className="LoginPage">
-    <div>
-      <h1>Login</h1>
-
-      <form onSubmit={handleLoginSubmit}>
-        <TextField
-          label="Email"
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleEmail}
-          fullWidth
-          margin="normal"
-          variant="outlined"
-        />
-        <TextField
-          label="Password"
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-          fullWidth
-          margin="normal"
-          variant="outlined"
-        />
-        <Button type="submit" variant="contained" color="primary" fullWidth>
-          LOGIN
-        </Button>
-
-      </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}>SIGN UP</Link>
-      </div>
-    </div>
-  );
-}
-
-export default LoginPage;
-
-*/

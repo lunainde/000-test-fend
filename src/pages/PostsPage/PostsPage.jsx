@@ -4,21 +4,19 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PostCard from "../../components/Cards/PostCard";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
-import "./PostsPage.css";
+import "../Styles/CardPagesStyle.css"
 
 const PostsPage = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   const [tags, setTags] = useState([]);
   const [selectedTag, setSelectedTag] = useState("");
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/api/posts`,
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts`,
           {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("authToken"),
@@ -33,7 +31,6 @@ const PostsPage = () => {
         setLoading(false);
       }
     };
-
     fetchPosts();
   }, []);
 
@@ -81,65 +78,3 @@ const PostsPage = () => {
 };
 
 export default PostsPage;
-
-// -------------V2------------
-
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-// import PostCard from "../../components/Cards/PostCard";
-// import "./PostsPage.css";
-
-// const PostsPage = () => {
-//   const [posts, setPosts] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-  
-//   useEffect(() => {
-//     const fetchPosts = async () => {
-//       try {
-//         const response = await axios.get(
-//           `${process.env.REACT_APP_SERVER_URL}/api/posts`,
-//           {
-//             headers: {
-//               Authorization: "Bearer " + localStorage.getItem("authToken"),
-//             },
-//           }
-//         );
-//         setPosts(response.data);
-//         setLoading(false);
-//       } catch (error) {
-//         setError(error.message);
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchPosts();
-//   }, []);
-
-//   if (loading) return <p>Loading...</p>;
-//   if (error) return <p>{error}</p>;
-
-//   return (
-//     <div className="posts-page">
-//       <h1>INSIGHTS</h1>
-//       <div className="posts-list">
-//         {posts.map((post) => (
-//           <PostCard key={post._id} post={post} />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default PostsPage;
-
-/*----------------V1------------------------
- <div key={post._id} className="post-item">
-    <h2>{post.title}</h2>
-    <img src={post.imgUrl} alt={post.title} />
-    <p>{post.content}</p>
-    <p>
-      <strong>Author:</strong> {post.author.name}
-    </p>
-  </div>
-*/

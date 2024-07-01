@@ -21,26 +21,39 @@ class AuthService {
 
   login = (requestBody) => {
     return this.api.post("/auth/login", requestBody);
-    // same as
-    // return axios.post("http://localhost:5005/auth/login");
+    // same as return axios.post("http://localhost:5005/auth/login");
   };
 
   signup = (requestBody) => {
     return this.api.post("/auth/signup", requestBody);
-    // same as
-    // return axios.post("http://localhost:5005/auth/singup");
+    // same us return axios.post("http://localhost:5005/auth/singup");
   };
 
   verify = () => {
     return this.api.get("/auth/verify");
-    // same as
-    // return axios.post("http://localhost:5005/auth/verify");
+    // same as return axios.post("http://localhost:5005/auth/verify");
   };
 
   // Method to fetch users
   fetchUsers = () => {
     return this.api.get("/api/users");
   };
+  //--------------FAV------------
+  //ADD A STARTUP TO FAVORITES
+  addFavoriteStartup = (startupId) => {
+    return this.api.post("/api/users/favorites", { startupId });
+  };
+
+  // REMOVE A STARTUP FROM FAVORITES 
+  removeFavoriteStartup = (startupId) => {
+    return this.api.delete("/api/users/favorites", { data: { startupId } });
+  };
+
+  // GET FAVORITE STARTUPS
+  getFavoriteStartups = () => {
+    return this.api.get("/api/users/favorites");
+  };
+
 }
 
 // Create one instance (object) of the service

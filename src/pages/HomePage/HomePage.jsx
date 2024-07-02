@@ -4,12 +4,12 @@
 
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/auth.context';
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/auth.context";
 import PostCard from "../../components/Cards/PostCard";
 import StartupCard from "../../components/Cards/StartupCard";
 import "./HomePage.css";
-import ProtectedWrapper from '../../components/Links/ProtectedWrapper';
+import ProtectedWrapper from "../../components/Links/ProtectedWrapper";
 
 function HomePage() {
   const [recentPosts, setRecentPosts] = useState([]);
@@ -53,7 +53,7 @@ function HomePage() {
   }, []);
 
   const playSound = () => {
-    const audio = new Audio('/tweet.wav');
+    const audio = new Audio("/tweet.wav");
     audio.play();
   };
 
@@ -62,7 +62,7 @@ function HomePage() {
 
   return (
     <div>
-      <div className= "left title-container">
+      <div className="left title-container">
         <h1 className="title">
           From the red carpet of fame to the green carpet of change
           <button onClick={playSound} className="bird-button">
@@ -71,7 +71,16 @@ function HomePage() {
         </h1>
         <div className="inline-text">
           <h1 className="typing-animation">LET IT TWEET HERE . . .</h1>
-        <img src="bird2.png" alt="Bird" style={{ marginLeft: '10px', verticalAlign: 'middle', width: '50px', height: '50px' }} />
+          <img
+            src="bird2.png"
+            alt="Bird"
+            style={{
+              marginLeft: "10px",
+              verticalAlign: "middle",
+              width: "50px",
+              height: "50px",
+            }}
+          />
         </div>
       </div>
 
@@ -80,28 +89,52 @@ function HomePage() {
       <div className="left title-container">
         <h2>Join the community of climate challenges leaders.</h2>
         <h4>
-          Powered by
-          {" "}
-          <a href="https://www.gr33nbase.io" target="_blank" rel="noopener noreferrer">@GR33NBASE</a>
+          Powered by{" "}
+          <a
+            href="https://www.gr33nbase.io"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @GR33NBASE
+          </a>
           {" | "}
-          <a href="https://www.dionamite.com" target="_blank" rel="noopener noreferrer">DIONAMITE</a>
+          <a
+            href="https://www.dionamite.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            DIONAMITE
+          </a>
           {" | "}
-          <a href="https://www.ironhack.com" target="_blank" rel="noopener noreferrer">IRONHACK</a>
+          <a
+            href="https://www.ironhack.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            IRONHACK
+          </a>
           {" | "}
-          <a href="https://www.01011000.io" target="_blank" rel="noopener noreferrer">X-iO</a>
+          <a
+            href="https://www.01011000.io"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            X-iO
+          </a>
         </h4>
       </div>
 
       <div className="divider" />
       <div className="left title-container">
         <div className="inline-text">
-        <ProtectedWrapper
-        className="subtitle"
-        toLoggedIn="/startups"
-        toLoggedOut="/login"
-        element="h2" >
-        STARTUPS_
-        </ProtectedWrapper>
+          <ProtectedWrapper
+            className="subtitle"
+            toLoggedIn="/startups"
+            toLoggedOut="/login"
+            element="h2"
+          >
+            STARTUPS_
+          </ProtectedWrapper>
           <h2> in the making for a better tomorrow</h2>
         </div>
         <p>. . . and great opportunities for investments that matter</p>
@@ -112,17 +145,18 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="divider" style={{ marginTop: '48px' }}  />
+      <div className="divider" style={{ marginTop: "48px" }} />
 
       <div className="left title-container">
         <div className="inline-text">
-        <ProtectedWrapper
-        className="subtitle"
-        toLoggedIn="/posts"
-        toLoggedOut="/login"
-        element="h2" >
-        INSIGHTS_
-        </ProtectedWrapper>
+          <ProtectedWrapper
+            className="subtitle"
+            toLoggedIn="/posts"
+            toLoggedOut="/login"
+            element="h2"
+          >
+            INSIGHTS_
+          </ProtectedWrapper>
           <h2>stay in the loop for good decisions making</h2>
         </div>
         <p>. . . and take the opportunity to share knowledge</p>
@@ -136,33 +170,6 @@ function HomePage() {
   );
 }
 export default HomePage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // ----------------------v1-v2------------------------
 // import React, { useEffect, useState, useContext } from "react";
@@ -182,7 +189,6 @@ export default HomePage;
 //   const [error, setError] = useState(null);
 //   const { isLoggedIn } = useContext(AuthContext);
 //   const navigate = useNavigate();
-
 
 //   useEffect(() => {
 //     const fetchRecentPosts = async () => {

@@ -3,7 +3,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./ArticlePage.css";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -14,7 +13,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { AuthContext } from "../../context/auth.context";
 import CardActionButtons from "../../components/Cards/CardActionButtons";
-
+import "./ArticlePage.css";
 
 const ArticlePage = () => {
   const { postId } = useParams();
@@ -23,11 +22,6 @@ const ArticlePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { user } = useContext(AuthContext); // Get current user from AuthContext
-
-  // State for like, bookmark, and share
-  const [liked, setLiked] = useState(false);
-  const [bookmarked, setBookmarked] = useState(false);
-  const [shared, setShared] = useState(false);  
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -59,18 +53,16 @@ const ArticlePage = () => {
       await axios.delete(
         `${process.env.REACT_APP_SERVER_URL}/api/posts/${post._id}`,
         {
-          headers: { Authorization: "Bearer " + localStorage.getItem("authToken")},
-        });
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("authToken"),
+          },
+        }
+      );
       navigate("/posts");
     } catch (error) {
       console.error("Failed to delete the post:", error.message);
     }
   };
-
-  // Handler functions for actions
-  const handleLikeClick = () => setLiked((prevLiked) => !prevLiked);
-  const handleBookmarkClick = () => setBookmarked((prevBookmarked) => !prevBookmarked);
-  const handleShareClick = () => setShared((prevShared) => !prevShared);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
@@ -153,17 +145,9 @@ const ArticlePage = () => {
             />
           ))}
         </Box>
-        
+
         <Divider sx={{ mt: 3 }} />
-        <CardActionButtons
-        postId={post._id}
-        liked={liked}
-        bookmarked={bookmarked}
-        shared={shared}
-        handleLikeClick={handleLikeClick}
-        handleBookmarkClick={handleBookmarkClick}
-        handleShareClick={handleShareClick}
-      />
+        <CardActionButtons post={post} />
       </Card>
 
       {isAuthor && (

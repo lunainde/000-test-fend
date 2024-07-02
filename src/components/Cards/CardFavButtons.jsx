@@ -1,17 +1,15 @@
 //client/src/components/Cards/CardFavButtons.jsx
 
-//client/src/components/Cards/CardFavButtons.jsx
-
 import React, { useContext, useState, useEffect } from 'react';
 import { IconButton, CardActions } from '@mui/material';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import { AuthContext } from '../../context/auth.context';
 import { useNavigate } from 'react-router-dom';
 import authService from '../../services/auth.service';
+import ShareIconMenu from './ShareIconMenu';
 
-const CardFavButtons = ({ startupId, initialShared, siteUrl }) => {
+const CardFavButtons = ({ url, title, startupId, initialShared, siteUrl }) => {
   const { isLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const [favorited, setFavorited] = useState(false); // INITIALIZE FAVORITED AS FALSE
@@ -43,10 +41,10 @@ const CardFavButtons = ({ startupId, initialShared, siteUrl }) => {
     try {
       if (favorited) {
         await authService.removeFavoriteStartup(startupId);
-        setFavorited(false); // SET FAVORITED TO FALSE
+        setFavorited(false); // Set Fav to False
       } else {
         await authService.addFavoriteStartup(startupId);
-        setFavorited(true); // SET FAVORITED TO TRUE
+        setFavorited(true); //Set Fav to True
       }
     } catch (error) {
       console.error('Error favoriting startup:', error);
@@ -91,233 +89,10 @@ const CardFavButtons = ({ startupId, initialShared, siteUrl }) => {
         <StarOutlineIcon />
       </IconButton>
 
-      <IconButton
-        onClick={handleShareClick}
-        sx={{
-          color: shared ? 'primary.main' : 'default',
-          backgroundColor: shared ? 'rgba(25, 118, 210, 0.1)' : 'transparent',
-        }}
-      >
-        <ShareOutlinedIcon />
-      </IconButton>
+      <ShareIconMenu url={url} title={title} />
+
     </CardActions>
   );
 };
 
 export default CardFavButtons;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ---------------------v2----------------------------
-// import React, { useContext, useState, useEffect } from 'react';
-// import { IconButton, CardActions } from '@mui/material';
-// import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
-// import StarOutlineIcon from '@mui/icons-material/StarOutline';
-// import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
-// import { AuthContext } from '../../context/auth.context';
-// import { useNavigate } from 'react-router-dom';
-// import authService from '../../services/auth.service';
-
-// const CardFavButtons = ({ startupId, initialFavorited, initialShared, siteUrl }) => {
-//   const { isLoggedIn } = useContext(AuthContext);
-//   const navigate = useNavigate();
-//   const [favorited, setFavorited] = useState(initialFavorited);
-//   const [shared, setShared] = useState(initialShared);
-
-//   // UPDATE FAVORITED STATE WHEN initialFavorited PROP CHANGES
-//   useEffect(() => {
-//     setFavorited(initialFavorited);
-//   }, [initialFavorited]);
-
-//   const handleFavoriteToggle = async () => {
-//     if (!isLoggedIn) {
-//       navigate('/login');
-//       return;
-//     }
-
-//     try {
-//       if (favorited) {
-//         await authService.removeFavoriteStartup(startupId);
-//         setFavorited(false); // set fav to false
-//       } else {
-//         await authService.addFavoriteStartup(startupId);
-//         setFavorited(true); // set fav to true
-//       }
-//     } catch (error) {
-//       console.error('Error favoriting startup:', error);
-//     }
-//   };
-
-//   const handleShareClick = () => {
-//     if (!isLoggedIn) {
-//       navigate('/login');
-//       return;
-//     }
-
-//     setShared(!shared);
-//     // Add logic here to handle the share action (e.g., API call or social media sharing)
-//   };
-
-//   const handleSiteClick = () => {
-//     if (!isLoggedIn) {
-//       navigate('/login');
-//       return;
-//     }
-
-//     window.open(siteUrl, '_blank');
-//   };
-
-//   return (
-//     <CardActions
-//       className="bottom-fix"
-//       sx={{ justifyContent: 'space-around', marginTop: 'auto' }}
-//     >
-//       <IconButton onClick={handleSiteClick}>
-//         <WorkOutlineOutlinedIcon />
-//       </IconButton>
-
-//       <IconButton
-//         onClick={handleFavoriteToggle}
-//         sx={{
-//           color: favorited ? 'primary.main' : 'default',
-//           backgroundColor: favorited ? 'rgba(25, 118, 210, 0.1)' : 'transparent',
-//         }}
-//       >
-//         <StarOutlineIcon />
-//       </IconButton>
-
-//       <IconButton
-//         onClick={handleShareClick}
-//         sx={{
-//           color: shared ? 'primary.main' : 'default',
-//           backgroundColor: shared ? 'rgba(25, 118, 210, 0.1)' : 'transparent',
-//         }}
-//       >
-//         <ShareOutlinedIcon />
-//       </IconButton>
-//     </CardActions>
-//   );
-// };
-
-// export default CardFavButtons;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// -----------v1-----------------------------------
-// import React, { useContext, useState } from 'react';
-// import { IconButton, CardActions } from '@mui/material';
-// import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
-// import StarOutlineIcon from '@mui/icons-material/StarOutline';
-// import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
-// import { AuthContext } from '../../context/auth.context';
-// import { useNavigate } from 'react-router-dom';
-// import authService from '../../services/auth.service';
-
-// const CardFavButtons = ({ startupId, initialFavorited, initialShared, siteUrl }) => {
-//   const { isLoggedIn } = useContext(AuthContext);
-//   const navigate = useNavigate();
-//   const [favorited, setFavorited] = useState(initialFavorited);
-//   const [shared, setShared] = useState(initialShared);
-
-//   const handleFavoriteToggle = async () => {
-//     if (!isLoggedIn) {
-//       navigate('/login');
-//       return;
-//     }
-
-//     try {
-//       if (favorited) {
-//         // Unfavorite the startup
-//         await authService.removeFavoriteStartup(startupId);
-//       } else {
-//         // Favorite the startup
-//         await authService.addFavoriteStartup(startupId);
-//       }
-//       setFavorited(!favorited);
-//     } catch (error) {
-//       console.error('Error favoriting startup:', error);
-//     }
-//   };
-
-//   const handleShareClick = () => {
-//     if (!isLoggedIn) {
-//       navigate('/login');
-//       return;
-//     }
-
-//     setShared(!shared);
-//     //logic to handle share action (e.g., API call or social media sharing)
-//   };
-
-//   const handleSiteClick = () => {
-//     if (!isLoggedIn) {
-//       navigate('/login');
-//       return;
-//     }
-
-//     window.open(siteUrl, '_blank');
-//   };
-
-//   return (
-//     <CardActions
-//       className="bottom-fix"
-//       sx={{ justifyContent: 'space-around', marginTop: 'auto' }}
-//     >
-//       <IconButton onClick={handleSiteClick}>
-//         <WorkOutlineOutlinedIcon />
-//       </IconButton>
-
-//       <IconButton
-//         onClick={handleFavoriteToggle}
-//         sx={{
-//           color: favorited ? 'primary.main' : 'default',
-//           backgroundColor: favorited ? 'rgba(25, 118, 210, 0.1)' : 'transparent',
-//         }}
-//       >
-//         <StarOutlineIcon />
-//       </IconButton>
-
-//       <IconButton
-//         onClick={handleShareClick}
-//         sx={{
-//           color: shared ? 'primary.main' : 'default',
-//           backgroundColor: shared ? 'rgba(25, 118, 210, 0.1)' : 'transparent',
-//         }}
-//       >
-//         <ShareOutlinedIcon />
-//       </IconButton>
-//     </CardActions>
-//   );
-// };
-
-// export default CardFavButtons;

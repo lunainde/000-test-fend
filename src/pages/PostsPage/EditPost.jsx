@@ -1,6 +1,5 @@
 //client/src/PostsPage/EditPost.jsx
 
-// client/src/pages/PostsPage/EditPost.jsx
 import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";

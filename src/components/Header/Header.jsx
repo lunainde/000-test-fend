@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../Header/Navbar";
 import BreadcrumbsWithIcon from "../Header/Breadcrumbs";
-// import './Header.css';
+import './Header.css';
 
 const Header = ({ pageTitle }) => {
   return (

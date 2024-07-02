@@ -9,18 +9,43 @@ import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlin
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import FeedbackOutlinedIcon from "@mui/icons-material/FeedbackOutlined";
 import WorkOutlineOutlinedIcon from "@mui/icons-material/WorkOutlineOutlined";
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import { Button, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Box, Typography, useTheme } from "@mui/material";
+import StarOutlineIcon from "@mui/icons-material/StarOutline";
+import {
+  Button,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Box,
+  Typography,
+  useTheme,
+} from "@mui/material";
 
 const menuItems = [
   { text: "Home", icon: <SquareIcon />, link: "/" },
   { text: "StartUps", icon: <StorefrontOutlinedIcon />, link: "/startups" },
   { text: "Insights", icon: <ClassOutlinedIcon />, link: "/posts" },
   { text: "Favorites", icon: <StarOutlineIcon />, link: "/favorites" },
-  { text: "Bookmarks", icon: <BookmarkBorderOutlinedIcon />, link: "/bookmarks" },
+  {
+    text: "Bookmarks",
+    icon: <BookmarkBorderOutlinedIcon />,
+    link: "/bookmarks",
+  },
   { text: "Post", icon: <EditNoteOutlinedIcon />, link: "/new-post" },
-  { text: "Feedback", icon: <FeedbackOutlinedIcon />, link: "/feedback" },
-  { text: "Invest", icon: <WorkOutlineOutlinedIcon />, link: "https://www.gr33nbase.io", external: true },
+  {
+    text: "Feedback",
+    icon: <FeedbackOutlinedIcon />,
+    link: "mailto:xionode@gmail.com?subject=GR33Ntweet | Feedback",
+    external: true,
+  },
+  {
+    text: "Invest",
+    icon: <WorkOutlineOutlinedIcon />,
+    link: "https://www.gr33nbase.io",
+    external: true,
+  },
 ];
 
 const Menu = () => {

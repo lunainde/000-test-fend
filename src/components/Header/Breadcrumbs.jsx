@@ -5,7 +5,7 @@ import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import SquareIcon from "@mui/icons-material/Square";
 import { useLocation } from "react-router-dom";
-import "./Breadcrumbs.css";
+import "./Header.css";
 
 function BreadcrumbsWithIcon() {
   const location = useLocation();

@@ -7,7 +7,9 @@ const Header = () => {
   return (
     <header className="header-container">
       <Navbar />
+      <div className="center">
       <BreadcrumbsWithIcon />
+      </div>
     </header>
   );
 };

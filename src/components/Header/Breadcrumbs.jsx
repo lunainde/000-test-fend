@@ -13,7 +13,7 @@ function BreadcrumbsWithIcon() {
 
   return (
     <Breadcrumbs
-      className="breadcrumbs-container"
+      className="breadcrumbs-container bread-center"
       separator="/"
       aria-label="breadcrumbs"
       sx={{ color: "neutral.main" }}
@@ -21,7 +21,7 @@ function BreadcrumbsWithIcon() {
       <Link
         color="#222222"
         href="/"
-        sx={{ display: "flex", alignItems: "center" }}
+        sx={{ display: "flex", alignItems: "start" }}
       >
         <SquareIcon color="secondary" sx={{ mr: 0.5 }} />
       </Link>
@@ -33,7 +33,7 @@ function BreadcrumbsWithIcon() {
           <Typography
             color="textPrimary"
             key={to}
-            sx={{ display: "flex", alignItems: "center" }}
+            sx={{ display: "flex", alignItems: "start" }}
           >
             {value}
           </Typography>
@@ -42,7 +42,7 @@ function BreadcrumbsWithIcon() {
             color="inherit"
             href={to}
             key={to}
-            sx={{ display: "flex", alignItems: "center" }}
+            sx={{ display: "flex", alignItems: "start" }}
           >
             {value}
           </Link>

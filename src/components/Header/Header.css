@@ -46,15 +46,22 @@
   display: flex;
   max-width: 1200px;
   margin: 0 auto;
-  height: 50px;
+  /*height: 50px;*/
 }
+.bread-center {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 50px;
+} 
+
 .breadcrumbs-container {
   max-width: 1200px !important;
   padding: 1rem;
   display: flex;
 }
 .css-1yav01k-MuiTypography-root-MuiBreadcrumbs-root {
-  margin: 0 auto !important;
+  /* margin: 0 auto !important; */
 }
 .css-1u10cx5-MuiTypography-root {
   margin: 0 auto;

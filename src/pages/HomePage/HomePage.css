@@ -12,16 +12,15 @@
 .title-container a:hover {
     text-decoration: underline; 
 }
-.title {
-    font-size: 6rem !important;
-    text-align: left;
-}
 .left {
     text-align: left;
 }
 .subtitle {
     font-size: 3rem;
     color: #09DD15;
+}
+.subtitle-text {
+    margin-left: 0.5rem;
 }
 .inline-text {
     display: flex;
@@ -32,11 +31,10 @@
     display: flex;
     align-items: center;
 }
-  .inline-text h1 {
+.inline-text h1 {
     font-family: monospace;
     overflow: hidden;
     white-space: nowrap;
-    /* border-right: 0.15em solid black; */
     animation: typing 3.5s steps(23), blink-caret 0.75s ;
 }
   
@@ -49,7 +47,7 @@
     from, to { border-color: transparent }
     50% { border-color: black }
 }
-
+/* --------BIRD--------- */
 .bird-button {
     background: none;
     border: none;
@@ -59,10 +57,39 @@
 .bird-button .bird-image {
     vertical-align: center;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     transition: box-shadow 0.3s ease;
 }
 .bird-button .bird-image:hover {
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 768px) {
+    .bird-button .bird-image {
+        width: 42px;
+        height: 42px;
+    }
+    .inline-text {
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    }
+    .subtitle {
+        font-size: 2.5rem;
+    }
+    .subtitle-text {
+        margin-left: 0; /* Remove left margin for better alignment on wrap */
+    }
+}
+@media (max-width: 480px) {
+    .bird-button .bird-image {
+        width: 36px;
+        height: 36px;
+    }
+
+    .subtitle {
+        font-size: 2rem;
+    }
+
+    .subtitle-text {
+        font-size: 2rem; /* Smaller font size for subtitle */
+    }
 }

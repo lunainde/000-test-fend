@@ -63,6 +63,7 @@ const NewPost = () => {
 
   return (
     <div className="NewPostPage">
+    <h1 className="page-title">POST_</h1>
       <UserCard user={user} />
       <form onSubmit={handleSubmit} className="new-post-form">
         <TextField

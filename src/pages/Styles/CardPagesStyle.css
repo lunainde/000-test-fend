@@ -3,6 +3,14 @@
   padding: 20px;
 }
 
+.page-header {
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .posts-list {
   max-width: 1200px;
   margin: 0 auto;
@@ -24,10 +32,7 @@
   height: auto;
 }
 
-.page-header {
-  max-width: 1200px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+.m-bottom {
+  margin-bottom: 200px;
 }
+

@@ -24,7 +24,7 @@ import {
 } from "@mui/material";
 
 const menuItems = [
-  { text: "Home", icon: <SquareIcon />, link: "/" },
+  { text: "Home", icon: <SquareIcon color="secondary" />, link: "/" },
   { text: "StartUps", icon: <StorefrontOutlinedIcon />, link: "/startups" },
   { text: "Insights", icon: <ClassOutlinedIcon />, link: "/posts" },
   { text: "Favorites", icon: <StarOutlineIcon />, link: "/favorites" },

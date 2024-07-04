@@ -117,12 +117,11 @@ function ProfilePage() {
   };
 
   return (
-    <div className="ProfilePage center">
+
+    <div className="ProfilePage center page-container">
       <div className="left-column">
-        <h1>Your Profile</h1>
+        <h1 className="page-title">YOU!</h1>
         <StartupCard key={user._id} user={user} />
-      
-      
       </div>
 
       <div className="signup-container">

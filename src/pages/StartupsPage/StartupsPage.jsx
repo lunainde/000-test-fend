@@ -1,12 +1,10 @@
 // client/src/pages/StartupsPage/StartupsPage.jsx
 
-// client/src/pages/StartupsPage/StartupsPage.jsx
-
-import React, { useState, useEffect, useContext } from 'react';
-import StartupCard from '../../components/Cards/StartupCard';
+import React, { useState, useEffect, useContext } from "react";
+import StartupCard from "../../components/Cards/StartupCard";
 import "../Styles/CardPagesStyle.css";
-import axios from 'axios';
-import { AuthContext } from '../../context/auth.context';
+import axios from "axios";
+import { AuthContext } from "../../context/auth.context";
 
 function StartupsPage() {
   const [users, setUsers] = useState([]);
@@ -17,9 +15,13 @@ function StartupsPage() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/users`);
-        const startups = response.data.filter(user => user.category === "Startup")
-        
+        const response = await axios.get(
+          `${process.env.REACT_APP_SERVER_URL}/api/users`
+        );
+        const startups = response.data.filter(
+          (user) => user.category === "Startup"
+        );
+
         setUsers(startups);
         setLoading(false);
       } catch (error) {
@@ -35,45 +37,20 @@ function StartupsPage() {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="page-header center">
-      <h1 className="page-title ">STARTUPS_</h1>
-      <div className="posts-list">
-        {users.map((user) => (
-          <StartupCard key={user._id} user={user} />
-        ))}
+    <div className="page-container">
+      <div className="page-header center">
+        <h1 className="page-title">STARTUPS_</h1>
+        <div className="posts-list">
+          {users.map((user) => (
+            <StartupCard key={user._id} user={user} />
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
 export default StartupsPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // -----------------v1-v2----------------------
 // import React, { useState, useEffect } from 'react';
@@ -94,7 +71,7 @@ export default StartupsPage;
 //       try {
 //         const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/users`);
 //         const startups = response.data.filter(user => user.category === "Startup")
-        
+
 //         setUsers(startups);
 //         setLoading(false);
 //       } catch (error) {
@@ -122,7 +99,3 @@ export default StartupsPage;
 // }
 
 // export default StartupsPage;
-
-
-
-

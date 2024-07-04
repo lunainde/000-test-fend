@@ -1,14 +1,17 @@
 /* client/src/pages/ArticlePage/ArticlePage.css */
-.center {
+.center-article {
     margin: 0 auto;
-  }
-
+    justify-content: center;
+    justify-self: center;
+}
 .crud-card {
+    margin: 0 auto;
+    justify-self: center;
     justify-content: flex-end;
     margin-top: 24px;
 }
-
 .crud-btn {
     border: 1px solid #222222;
     padding: 16px;
 }
+        

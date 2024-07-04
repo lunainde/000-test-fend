@@ -1,12 +1,12 @@
 //client/src/pages/SelectionPage/FavoritesPage.jsx
 
-import React, { useState, useEffect, useContext } from 'react';
-import StartupCard from '../../components/Cards/StartupCard';
+import React, { useState, useEffect, useContext } from "react";
+import StartupCard from "../../components/Cards/StartupCard";
 // import "../Styles/FavoritesPage.css";
 import "../Styles/CardPagesStyle.css";
-import axios from 'axios';
-import { AuthContext } from '../../context/auth.context';
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import { AuthContext } from "../../context/auth.context";
+import { useNavigate } from "react-router-dom";
 
 function FavoritesPage() {
   const [favorites, setFavorites] = useState([]);
@@ -23,11 +23,14 @@ function FavoritesPage() {
           return;
         }
 
-        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/users/favorites`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('authToken')}`
+        const response = await axios.get(
+          `${process.env.REACT_APP_SERVER_URL}/api/users/favorites`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+            },
           }
-        });
+        );
 
         setFavorites(response.data);
         setLoading(false);
@@ -50,44 +53,24 @@ function FavoritesPage() {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="page-header center">
-      <h1 className="page-title">SELECTED STARTUPS_</h1>
-      <div className="posts-list">
-        {favorites.map((user) => (
-          <StartupCard
-            key={user._id}
-            user={{ ...user, isFavorited: true }} // PASS ISFAVORITED AS TRUE
-            onRemoveFavorite={handleRemoveFavorite} // ADD PROP TO HANDLE REMOVE
-          />
-        ))}
+    <div className="page-container">
+      <div className="page-header center">
+        <h1 className="page-title">SELECTED STARTUPS_</h1>
+        <div className="posts-list">
+          {favorites.map((user) => (
+            <StartupCard
+              key={user._id}
+              user={{ ...user, isFavorited: true }} // PASS ISFAVORITED AS TRUE
+              onRemoveFavorite={handleRemoveFavorite} // ADD PROP TO HANDLE REMOVE
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
 export default FavoritesPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // --------v1-----------------
 // import React, { useState, useEffect, useContext } from 'react';

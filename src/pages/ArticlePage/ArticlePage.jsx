@@ -70,88 +70,97 @@ const ArticlePage = () => {
   const isAuthor = user && user._id === post.user._id;
 
   return (
-    <div>
-      <Card className="center" sx={{ maxWidth: 1200 }}>
-        <CardMedia
-          component="img"
-          alt={post.title}
-          height="600"
-          image={post.imgUrl}
-        />
-        <CardContent>
-          <Box display="flex">
-            <Avatar
-              src={post.user.imgUrl}
-              alt={post.user.name}
-              sx={{
-                width: "80px !important",
-                height: "80px !important",
-                border: "1px solid black",
-                borderRadius: "0 !important",
-                marginRight: "1rem",
-              }}
-            />
-            <Box>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                textAlign="left"
-              >
-                {new Date(post.createdAt).toLocaleDateString()}
-              </Typography>
-              <Link
-                href={post.user.siteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                underline="none"
-              >
-                <Typography textAlign="left">{post.user.name}</Typography>
-              </Link>
-              <Typography textAlign="left">{post.user.category}</Typography>
-              <Typography textAlign="left">{post.user.headline}</Typography>
+    <div className="page-container">
+      <Box
+        className="center-article"
+        
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          mt: 6
+        }}
+      >
+        <Card sx={{ maxWidth: 1200 }}>
+          <CardMedia
+            component="img"
+            alt={post.title}
+            height="600"
+            image={post.imgUrl}
+          />
+          <CardContent>
+            <Box display="flex">
+              <Avatar
+                src={post.user.imgUrl}
+                alt={post.user.name}
+                sx={{
+                  width: "80px !important",
+                  height: "80px !important",
+                  border: "1px solid black",
+                  borderRadius: "0 !important",
+                  marginRight: "1rem",
+                }}
+              />
+              <Box>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  textAlign="left"
+                >
+                  {new Date(post.createdAt).toLocaleDateString()}
+                </Typography>
+                <Link
+                  href={post.user.siteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  underline="none"
+                >
+                  <Typography textAlign="left">{post.user.name}</Typography>
+                </Link>
+                <Typography textAlign="left">{post.user.category}</Typography>
+                <Typography textAlign="left">{post.user.headline}</Typography>
+              </Box>
             </Box>
+
+            <Divider sx={{ my: 2 }} />
+
+            <Typography
+              my="24px"
+              gutterBottom
+              variant="h3"
+              component="div"
+              align="left"
+              className="title-height"
+            >
+              {post.title}
+            </Typography>
+
+            <Typography
+              my="24px"
+              gutterBottom
+              variant="h6"
+              component="div"
+              align="left"
+              className="title-height"
+              dangerouslySetInnerHTML={{ __html: post.content }} // Use dangerouslySetInnerHTML
+            />
+          </CardContent>
+
+          <Box mt={2}>
+            {post.tags.map((tag, index) => (
+              <Chip
+                key={index}
+                label={tag}
+                sx={{ backgroundColor: "#f5f5f5", marginRight: 1 }}
+              />
+            ))}
           </Box>
 
-          <Divider sx={{ my: 2 }} />
-
-          <Typography
-            my="24px"
-            gutterBottom
-            variant="h3"
-            component="div"
-            align="left"
-            className="title-height"
-          >
-            {post.title}
-          </Typography>
-
-          <Typography
-            my="24px"
-            gutterBottom
-            variant="h6"
-            component="div"
-            align="left"
-            className="title-height"
-            dangerouslySetInnerHTML={{ __html: post.content }} // Use dangerouslySetInnerHTML
-          />
-        </CardContent>
-
-        <Box mt={2}>
-          {post.tags.map((tag, index) => (
-            <Chip
-              key={index}
-              label={tag}
-              sx={{ backgroundColor: "#f5f5f5", marginRight: 1 }}
-            />
-          ))}
-        </Box>
-
-        <Divider sx={{ mt: 3 }} />
-        <CardActionButtons post={post} />
-      </Card>
-
+          <Divider sx={{ mt: 3 }} />
+          <CardActionButtons post={post} />
+        </Card>
+      </Box>
       {isAuthor && (
-        <CardActions className="crud-card center" sx={{ maxWidth: 1200 }}>
+        <CardActions className="crud-card" sx={{ maxWidth: 1200 }}>
           <IconButton onClick={handleEdit}>
             <EditIcon className="crud-btn" />
           </IconButton>

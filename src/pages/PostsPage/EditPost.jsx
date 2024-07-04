@@ -89,6 +89,7 @@ const EditPost = () => {
 
   return (
     <div className="EditPostPage">
+    <h1 className="page-title">EDIT POST_</h1>
       <UserCard user={user} />
       <form onSubmit={handleSubmit} className="edit-post-form">
         <TextField

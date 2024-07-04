@@ -39,7 +39,7 @@ function LoginPage() {
   return (
     <div className="LoginPage">
       <div>
-        <h1>Login</h1>
+      <h1 className="page-title">LOGIN_</h1>
 
         <form onSubmit={handleLoginSubmit}>
           <TextField

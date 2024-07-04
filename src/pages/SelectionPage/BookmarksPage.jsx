@@ -17,11 +17,14 @@ const BookmarksPage = () => {
     const fetchBookmarks = async () => {
       if (isLoggedIn) {
         try {
-          const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/user/bookmarks`, {
-            headers: {
-              Authorization: "Bearer " + localStorage.getItem("authToken"),
-            },
-          });
+          const response = await axios.get(
+            `${process.env.REACT_APP_SERVER_URL}/api/user/bookmarks`,
+            {
+              headers: {
+                Authorization: "Bearer " + localStorage.getItem("authToken"),
+              },
+            }
+          );
           setBookmarks(response.data);
         } catch (error) {
           setError(error.message);
@@ -36,17 +39,20 @@ const BookmarksPage = () => {
 
   if (loading) return <CircularProgress />;
   if (error) return <Typography color="error">{error}</Typography>;
-  if (!isLoggedIn) return <Typography>Please log in to view your bookmarks.</Typography>;
+  if (!isLoggedIn)
+    return <Typography>Please log in to view your bookmarks.</Typography>;
 
   return (
-    <div className="page-header center">
-      <h1 className="page-title">SELECTED POSTS_</h1>
-      <div className="posts-list">
-        {bookmarks.length > 0 ? (
-          bookmarks.map(post => <PostCard key={post._id} post={post} />)
-        ) : (
-          <Typography>No bookmarks found.</Typography>
-        )}
+    <div className="page-container">
+      <div className="page-header center">
+        <h1 className="page-title">SELECTED POSTS_</h1>
+        <div className="posts-list">
+          {bookmarks.length > 0 ? (
+            bookmarks.map((post) => <PostCard key={post._id} post={post} />)
+          ) : (
+            <Typography>No bookmarks found.</Typography>
+          )}
+        </div>
       </div>
     </div>
   );

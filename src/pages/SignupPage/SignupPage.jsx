@@ -1,5 +1,3 @@
-//client/src/pages/SignupPage/SignupPage.jsx
-
 import React, { useState } from "react";
 import {
   TextField,
@@ -71,7 +69,7 @@ function SignupPage() {
   };
 
   return (
-    <div className="SignupPage center">
+    <div className="signup-page center page-container">
       <div className="left-column">
         <h1>Happy to have you here!</h1>
         <p>Let's join forces for a better tomorrow.</p>

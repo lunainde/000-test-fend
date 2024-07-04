@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PostCard from "../../components/Cards/PostCard";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
-import "../Styles/CardPagesStyle.css"
+import "../Styles/CardPagesStyle.css";
 
 const PostsPage = () => {
   const [posts, setPosts] = useState([]);
@@ -16,7 +16,8 @@ const PostsPage = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts`,
+        const response = await axios.get(
+          `${process.env.REACT_APP_SERVER_URL}/api/posts`,
           {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("authToken"),
@@ -24,7 +25,7 @@ const PostsPage = () => {
           }
         );
         setPosts(response.data);
-        setTags([...new Set(response.data.flatMap(post => post.tags))]); // Extract unique tags
+        setTags([...new Set(response.data.flatMap((post) => post.tags))]); // Extract unique tags
         setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -46,32 +47,38 @@ const PostsPage = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div>
-     <div className="page-header center">
-      <h1 className="page-title">INSIGHTS_</h1>
-      <FormControl variant="outlined" margin="normal" sx={{ width: '200px' }}>
-        <InputLabel id="tag-select-label">FILTER</InputLabel>
-        <Select
-          labelId="tag-select-label"
-          value={selectedTag}
-          onChange={handleTagChange}
-          label="Filter by Tag"
-        >
-          <MenuItem value="">
-            <em>All</em>
-          </MenuItem>
-          {tags.map((tag) => (
-            <MenuItem key={tag} value={tag}>
-              {tag}
-            </MenuItem>
+    <div className="page-container">
+      <div className="page-header center m-bottom">
+        <h1 className="page-title">INSIGHTS_</h1>
+        <div>
+          <FormControl
+            variant="outlined"
+            margin="normal"
+            sx={{ width: "200px" }}
+          >
+            <InputLabel id="tag-select-label">FILTER</InputLabel>
+            <Select
+              labelId="tag-select-label"
+              value={selectedTag}
+              onChange={handleTagChange}
+              label="Filter by Tag"
+            >
+              <MenuItem value="">
+                <em>All</em>
+              </MenuItem>
+              {tags.map((tag) => (
+                <MenuItem key={tag} value={tag}>
+                  {tag}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
+        <div className="posts-list">
+          {filteredPosts.map((post) => (
+            <PostCard key={post._id} post={post} sx={{ marginBottom: 2 }} />
           ))}
-        </Select>
-      </FormControl>
-    </div>  
-      <div className="posts-list">
-        {filteredPosts.map((post) => (
-          <PostCard key={post._id} post={post} />
-        ))}
+        </div>
       </div>
     </div>
   );

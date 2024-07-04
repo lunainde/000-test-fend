@@ -3,7 +3,7 @@ import "./NotFoundPage.css";
 function NotFoundPage() {
   return (
      <div className="not-found-container">
-        <h1>No fossil-fuel projects here_</h1>
+        <h1 className="page-title">NO FOSSIL-FUEL PROJECTS HERE_</h1>
     </div>
   );
 }

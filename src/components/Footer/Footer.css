@@ -1,9 +1,13 @@
 .footer-container {
-margin: 24px auto 0 auto !important;
+margin-top: auto; /* Pushes the footer to the bottom */
+margin-bottom: 0 !important;
+padding: 20px 0;
 bottom: 0 !important;
-align-items: center !important;
-justify-content: center !important;
+
 }
-.space {
-    margin-top: 120px;
+.m-top {
+    margin-top: 200px;
+}
+.footer-box-center {
+    margin: 0 auto !important;
 }

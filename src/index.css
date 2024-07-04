@@ -1,9 +1,21 @@
 /* client/src/index.css */
 @import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
 
-body {
+/* body {
   margin: 0;
   font-family: "Play", sans-serif;
+} */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Play", sans-serif;
+}
+
+.page-container {
+  /* display: flex;
+  flex-direction: column; */
+  min-height: 100vh; 
 }
 
 .play-regular {
@@ -28,3 +40,35 @@ body {
   font-size: 6rem !important;
   text-align: left;
 }
+/* For tablets and larger devices (landscape) */
+@media (max-width: 1200px) {
+  .page-title {
+    font-size: 5rem !important;
+  }
+}
+
+/* For tablets and larger devices (portrait) */
+@media (max-width: 992px) {
+  .page-title {
+    font-size: 4rem !important;
+  }
+}
+
+/* For mobile phones */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 3rem !important;
+  }
+}
+
+/* For small mobile phones */
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 2.5rem !important;
+  }
+}
+
+/* Add margin-bottom to the cards */
+/* .posts-list .MuiCard-root {
+  margin-bottom: 16px;
+} */

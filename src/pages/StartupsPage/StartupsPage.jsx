@@ -19,7 +19,7 @@ function StartupsPage() {
           `${process.env.REACT_APP_SERVER_URL}/api/users`
         );
         const startups = response.data.filter(
-          (user) => user.category === "Startup"
+          (user) => user.category === "startup"
         );
 
         setUsers(startups);

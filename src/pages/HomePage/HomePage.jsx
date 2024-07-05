@@ -40,6 +40,7 @@ function HomePage() {
         const response = await axios.get(
           `${process.env.REACT_APP_SERVER_URL}/api/users/startups`
         );
+        console.warn(response.data);
         setRecentStartups(response.data);
         setLoading(false);
       } catch (error) {
@@ -133,7 +134,10 @@ function HomePage() {
           >
             STARTUPS_
           </ProtectedWrapper>
-          <h2 className="subtitle-text"> in the making for a better tomorrow</h2>
+          <h2 className="subtitle-text">
+            {" "}
+            in the making for a better tomorrow
+          </h2>
         </div>
         <p>. . . and great opportunities for investments that matter</p>
         <div className="posts-list">
@@ -155,7 +159,9 @@ function HomePage() {
           >
             INSIGHTS_
           </ProtectedWrapper>
-          <h2 className="subtitle-text">stay in the loop for good decisions making</h2>
+          <h2 className="subtitle-text">
+            stay in the loop for good decisions making
+          </h2>
         </div>
         <p>. . . and take the opportunity to share knowledge</p>
         <div className="posts-list">

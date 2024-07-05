@@ -25,6 +25,7 @@ const BookmarksPage = () => {
               },
             }
           );
+          console.warn(response.data);
           setBookmarks(response.data);
         } catch (error) {
           setError(error.message);

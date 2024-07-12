@@ -2,8 +2,6 @@
 LICENSE
 Distributed under the GR33NBASE License. 
 CONTACT - @gr33nbase - hello@gr33nbase.io
-Project Link: 
-https://github.com/lunainde/041-final-fend
 
 ## Table of Contents
 1. License
